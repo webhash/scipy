@@ -778,6 +778,18 @@ class TestStateSpace(object):
         assert_(StateSpace(s) is not s)
         assert_(s.to_ss() is not s)
 
+    def test_dt(self):
+        m = np.ones((1, 1))
+        p1 = StateSpace(m, m, m, m, dt=1)
+        p2 = StateSpace(m, m, m, m, dt=1)
+
+        #Add operation test
+        p3 = p1 + p2
+        assert_equal(p3.dt, p1.dt)
+        #Multiply operation
+        p4 = p1 * p2
+        assert_equal(p4.dt, p1.dt)
+
     def test_properties(self):
         # Test setters/getters for cross class properties.
         # This implicitly tests to_tf() and to_zpk()

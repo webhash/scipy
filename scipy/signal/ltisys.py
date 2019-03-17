@@ -1404,7 +1404,8 @@ class StateSpace(LinearTimeInvariant):
         return StateSpace(np.asarray(a, dtype=common_dtype),
                           np.asarray(b, dtype=common_dtype),
                           np.asarray(c, dtype=common_dtype),
-                          np.asarray(d, dtype=common_dtype))
+                          np.asarray(d, dtype=common_dtype),
+                          self.dt)
 
     def __rmul__(self, other):
         """Pre-multiply a scalar or matrix (but not StateSpace)"""
@@ -1473,7 +1474,8 @@ class StateSpace(LinearTimeInvariant):
         return StateSpace(np.asarray(a, dtype=common_dtype),
                           np.asarray(b, dtype=common_dtype),
                           np.asarray(c, dtype=common_dtype),
-                          np.asarray(d, dtype=common_dtype))
+                          np.asarray(d, dtype=common_dtype),
+                          self.dt)
 
     def __sub__(self, other):
         if not self._check_binop_other(other):
